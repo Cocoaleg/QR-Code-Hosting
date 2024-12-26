@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Viewer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <img id="qr-code" alt="QR Code">
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const qrUrl = params.get('url');
+        if (qrUrl) {
+            document.getElementById('qr-code').src = qrUrl;
+        } else {
+            document.body.innerHTML = '<p style="text-align: center; font-size: 20px;">No QR Code Found</p>';
+        }
+    </script>
+</body>
+</html>
+
